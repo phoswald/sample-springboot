@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SampleController {
 
-    @GetMapping("/pages/sample")
+    @GetMapping("/rest/pages/sample")
     public ModelAndView getSamplePage() {
         return new ModelAndView("sample", "model", new SampleViewModel());
     }

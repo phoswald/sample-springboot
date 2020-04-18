@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/pages/tasks")
+@RequestMapping("/rest/pages/tasks")
 @Transactional
 public class TaskController {
 
@@ -74,7 +74,7 @@ public class TaskController {
         TaskEntity entity = repository.selectTaskById(id);
         if (Objects.equals(action, "delete")) {
             repository.deleteTask(entity);
-            response.sendRedirect("/pages/tasks");
+            response.sendRedirect("/rest/pages/tasks");
             return null;
         }
         if (Objects.equals(action, "store")) {
