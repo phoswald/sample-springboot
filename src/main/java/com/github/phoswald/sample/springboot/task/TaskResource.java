@@ -48,7 +48,7 @@ public class TaskResource {
     }
 
     @PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-    public TaskEntity putTask(@PathVariable("id") String id, TaskEntity request) {
+    public TaskEntity putTask(@PathVariable("id") String id, @RequestBody TaskEntity request) {
         TaskEntity entity = repository.selectTaskById(id);
         entity.setTimestamp(Instant.now());
         entity.setTitle(request.getTitle());

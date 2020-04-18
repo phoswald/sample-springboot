@@ -13,22 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/rest/sample")
 public class SampleResource {
 
-    private String settingA = "A?"; // TODO make configurable
-
-    private String settingB = "B?"; // TODO make configurable
+    private String sampleConfig = System.getProperty("app.sample.config");
 
     @GetMapping(path = "/time", produces = "text/plain")
     public String getTime() {
-        String now = ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
-        return "The current time is " + now;
+        return ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
     }
 
     @GetMapping(path = "/config", produces = "text/plain")
     public String getConfig() {
-        String config = "" + //
-                "SampleConfigSettingA = " + settingA + "\n" + //
-                "SampleConfigSettingB = " + settingB + "\n"; //
-        return config;
+        return sampleConfig;
     }
 
     @PostMapping(path = "/echo", consumes = "text/xml", produces = "text/xml")
