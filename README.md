@@ -5,7 +5,7 @@ Experiments with Spring Boot, featuring:
 - Static web content
 - Dynamic web content using Spring MVC and Thymeleaf
 - REST endpoints using Spring MVC
-- H2 database using JPA 
+- H2 database using JPA and Hibernate
 
 ## Run Standalone
 
