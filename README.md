@@ -1,6 +1,6 @@
 # sample-springboot
 
-Experiments with Spring Boot, featuring:
+Experiments with Spring Boot and Docker, featuring:
 
 - Static web content
 - Dynamic web content using Spring MVC and Thymeleaf
@@ -9,11 +9,24 @@ Experiments with Spring Boot, featuring:
 
 ## Run Standalone
 
-    $ mvn clean verify
-    $ java \
-      -Dserver.port=8080 \
-      -Dapp.sample.config=SampleConfigValue \
-      -jar target/sample-springboot-0.1.0-SNAPSHOT.jar
+~~~
+$ mvn clean verify
+$ export APP_SAMPLE_CONFIG=ValueFromShell
+$ java \
+  -Dserver.port=8080 \
+  -jar target/sample-springboot-0.1.0-SNAPSHOT.jar
+~~~
+
+## Run with Docker
+
+~~~
+$ mvn clean verify -P docker
+$ docker run -it --name sample-springboot --rm \
+  -p 8080:8080 \
+  -e APP_SAMPLE_CONFIG=ValueFromDockerRun \
+  -v "$(pwd)/../databases":/usr/local/application/databases \
+  sample-springboot:0.1.0-SNAPSHOT
+~~~
 
 ## URLs
 

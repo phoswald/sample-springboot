@@ -2,6 +2,7 @@ package com.github.phoswald.sample.springboot.sample;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/rest/sample")
 public class SampleResource {
 
-    private String sampleConfig = System.getProperty("app.sample.config");
+    private final String sampleConfig = Optional.ofNullable(System.getenv("APP_SAMPLE_CONFIG")).orElse("Undefined");
 
     @GetMapping(path = "/time", produces = "text/plain")
     public String getTime() {
