@@ -3,11 +3,9 @@ package com.github.phoswald.sample.springboot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 
-@SpringBootApplication
-@EnableJpaRepositories
+@SpringBootApplication(scanBasePackages = "com.github.phoswald.sample")
 public class Application {
 
     public static void main(String[] args) {

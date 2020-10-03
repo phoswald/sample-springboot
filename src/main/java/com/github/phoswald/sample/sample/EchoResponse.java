@@ -1,4 +1,4 @@
-package com.github.phoswald.sample.springboot.sample;
+package com.github.phoswald.sample.sample;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

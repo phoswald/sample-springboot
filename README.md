@@ -28,16 +28,19 @@ $ docker run -it --name sample-springboot --rm \
   sample-springboot:0.1.0-SNAPSHOT
 ~~~
 
-## URLs
+# URLs
 
 - http://localhost:8080/
 
 ~~~
-$ curl 'http://localhost:8080/rest/sample/time'
-$ curl 'http://localhost:8080/rest/sample/config'
-$ curl 'http://localhost:8080/rest/sample/echo' -i -X POST \
+$ curl 'http://localhost:8080/rest/sample/time' -i
+$ curl 'http://localhost:8080/rest/sample/config' -i
+$ curl 'http://localhost:8080/rest/sample/echo-xml' -i -X POST \
   -H 'content-type: text/xml' \
   -d '<EchoRequest><input>This is CURL</input></EchoRequest>'
+$ curl 'http://localhost:8080/rest/sample/echo-json' -i -X POST \
+  -H 'content-type: application/json' \
+  -d '{"input":"This is CURL"}'
 $ curl 'http://localhost:8080/rest/tasks' -i
 $ curl 'http://localhost:8080/rest/tasks' -i -X POST \
   -H 'content-type: application/json' \

@@ -1,4 +1,4 @@
-package com.github.phoswald.sample.springboot.task;
+package com.github.phoswald.sample.task;
 
 import java.util.List;
 

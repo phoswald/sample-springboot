@@ -1,4 +1,4 @@
-package com.github.phoswald.sample.springboot.sample;
+package com.github.phoswald.sample.sample;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,8 +26,15 @@ public class SampleResource {
         return sampleConfig;
     }
 
-    @PostMapping(path = "/echo", consumes = "text/xml", produces = "text/xml")
-    public EchoResponse postEcho(@RequestBody EchoRequest request) {
+    @PostMapping(path = "/echo-xml", consumes = "text/xml", produces = "text/xml")
+    public EchoResponse postEchoXml(@RequestBody EchoRequest request) {
+        EchoResponse response = new EchoResponse();
+        response.setOuput("Received " + request.getInput());
+        return response;
+    }
+
+    @PostMapping(path = "/echo-json", consumes = "application/json", produces = "application/json")
+    public EchoResponse postEchoJson(@RequestBody EchoRequest request) {
         EchoResponse response = new EchoResponse();
         response.setOuput("Received " + request.getInput());
         return response;
