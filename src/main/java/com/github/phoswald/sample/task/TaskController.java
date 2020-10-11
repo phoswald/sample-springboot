@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/rest/pages/tasks")
 @Transactional
+@RequestMapping("/app/pages/tasks")
 public class TaskController {
 
     @Autowired
@@ -29,14 +29,14 @@ public class TaskController {
     @Autowired
     private HttpServletResponse response;
 
-    @GetMapping(produces = "text/html")
+    @GetMapping
     public ModelAndView getTasksPage() {
         List<TaskEntity> entities = repository.selectAllTasks();
         List<TaskViewModel> viewModel = TaskViewModel.newList(entities);
         return new ModelAndView("task-list", "tasks", viewModel);
     }
 
-    @PostMapping(consumes = "application/x-www-form-urlencoded", produces = "text/html")
+    @PostMapping(consumes = "application/x-www-form-urlencoded")
     public ModelAndView postTasksPage( //
             @RequestParam(name = "title", required = false) String title, //
             @RequestParam(name = "description", required = false) String description) {
@@ -51,7 +51,7 @@ public class TaskController {
         return getTasksPage();
     }
 
-    @GetMapping(path = "/{id}", produces = "text/html")
+    @GetMapping("/{id}")
     public ModelAndView getTaskPage( //
             @PathVariable("id") String id, //
             @RequestParam(name = "action", required = false) String action) {
@@ -64,7 +64,7 @@ public class TaskController {
         }
     }
 
-    @PostMapping(path = "/{id}", produces = "text/html")
+    @PostMapping("/{id}")
     public ModelAndView postTaskPage( //
             @PathVariable("id") String id, //
             @RequestParam(name = "action", required = false) String action, //
@@ -74,7 +74,7 @@ public class TaskController {
         TaskEntity entity = repository.selectTaskById(id);
         if (Objects.equals(action, "delete")) {
             repository.deleteTask(entity);
-            response.sendRedirect("/rest/pages/tasks");
+            response.sendRedirect("/app/pages/tasks");
             return null;
         }
         if (Objects.equals(action, "store")) {

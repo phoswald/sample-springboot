@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rest/tasks")
 @Transactional
+@RequestMapping("/app/rest/tasks")
 public class TaskResource {
 
     @Autowired

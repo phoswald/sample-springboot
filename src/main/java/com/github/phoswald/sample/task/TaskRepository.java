@@ -3,7 +3,6 @@ package com.github.phoswald.sample.task;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Component;
 public class TaskRepository {
 
     @Autowired
-    @PersistenceContext(unitName="taskDS")
     private EntityManager em;
 
     public List<TaskEntity> selectAllTasks() {
