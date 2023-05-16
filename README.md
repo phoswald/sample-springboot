@@ -14,7 +14,7 @@ $ mvn clean verify
 $ export APP_SAMPLE_CONFIG=ValueFromShell
 $ java \
   -Dserver.port=8080 \
-  -Dspring.datasource.url=jdbc:h2:./databases/task-db-v200 \
+  -Dspring.datasource.url=jdbc:h2:./databases/task-db \
   -jar target/sample-springboot-0.1.0-SNAPSHOT.jar
 ~~~
 
@@ -25,7 +25,7 @@ $ mvn clean verify -P docker
 $ docker run -it --name sample-springboot --rm \
   -p 8080:8080 \
   -e APP_SAMPLE_CONFIG=ValueFromDockerRun \
-  -e SPRING_DATASOURCE_URL=jdbc:h2:/databases/task-db-v200 \
+  -e SPRING_DATASOURCE_URL=jdbc:h2:/databases/task-db \
   -v ./databases/:/databases \
   sample-springboot:0.1.0-SNAPSHOT
 ~~~
