@@ -27,7 +27,7 @@ $ docker run -it --name sample-springboot --rm \
   -e APP_SAMPLE_CONFIG=ValueFromDockerRun \
   -e SPRING_DATASOURCE_URL=jdbc:h2:/databases/task-db \
   -v ./databases/:/databases \
-  sample-springboot:0.1.0-SNAPSHOT
+  philip/sample-springboot:0.1.0-SNAPSHOT
 ~~~
 
 # URLs

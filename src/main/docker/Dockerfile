@@ -1,16 +1,16 @@
-FROM eclipse-temurin:17-jre-alpine
+FROM code.phoswald.ch/philip/jre-25:latest
 
-ENV TZ                Europe/Zurich
-ENV LANG              de_CH.UTF-8
-ENV LC_ALL            de_CH.UTF-8
-ENV JAVA_TOOL_OPTIONS -XX:MaxRAMPercentage=50
-ENV APP_SAMPLE_CONFIG ValueFromDockerfile
+ENV TZ                  Europe/Zurich
+ENV LANG                de_CH.UTF-8
+ENV LC_ALL              de_CH.UTF-8
+#   JAVA_HOME           /usr/lib/jvm/default-jvm
+#   JRE_CACERTS_PATH    ${JAVA_HOME}/lib/security/cacerts
+ENV JAVA_TOOL_OPTIONS   -XX:MaxRAMPercentage=50
+ENV APP_SAMPLE_CONFIG   ValueFromDockerfile
 
-# Define user/group (optional)
-USER daemon:daemon
-
-# Copy application and define command
 WORKDIR /usr/local/application/
-EXPOSE 8080
 COPY maven .
 CMD ["java", "-jar", "sample-springboot-0.1.0-SNAPSHOT.jar"]
+
+USER daemon:daemon
+EXPOSE 8080
