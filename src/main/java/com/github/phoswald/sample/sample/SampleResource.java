@@ -19,12 +19,12 @@ public class SampleResource {
 
     @GetMapping(path = "/time", produces = "text/plain")
     public String getTime() {
-        return ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
+        return ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME) + "\n";
     }
 
     @GetMapping(path = "/config", produces = "text/plain")
     public String getConfig() {
-        return config.getConfig();
+        return config.getConfig() + "\n";
     }
 
     @PostMapping(path = "/echo-xml", consumes = "text/xml", produces = "text/xml")
